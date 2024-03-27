@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'LXGWWenKai-Bold';
+  src: url('../src/assets/fonts/TTF/LXGWWenKai-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  font-family:Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fffcfc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+*{
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+  color:green;
+}
