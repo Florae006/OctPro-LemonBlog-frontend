@@ -21,6 +21,9 @@ export default {
   <div v-show="this.$route.params.manage == 'userManage'">
     <h1>展示userManage</h1>
   </div>
+  <div v-show="this.$route.params.manage == 'teachManage'">
+    <h1>展示teachManage</h1>
+  </div>
   <div v-show="this.$route.params.manage == 'bulletinManage'">
     <h1>展示bulletinManage</h1>
   </div>

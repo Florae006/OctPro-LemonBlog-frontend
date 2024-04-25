@@ -24,7 +24,11 @@ export default defineConfig({
         { component: 'VIcon', props: ['icon'] },
       ]
     }),
-    vue(),
+    vue({
+      script: {
+        defineModel: true,
+      }
+    }),
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),

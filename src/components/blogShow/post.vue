@@ -3,10 +3,64 @@ import axios from 'axios';
 import { ElMessage, ElMessageBox, ElNotification } from 'element-plus';
 import { id } from 'element-plus/es/locale';
 import { getCurrentInstance, h, onMounted, reactive, ref } from 'vue'
-
+import { useRouter } from 'vue-router';
 export default {
   name: '博客内容',
   created() {
+    if (this.$route.params.blogid == 0) {
+      this.blogContent= {
+        title: '前端第一次培训',
+        auther: 'syc',
+        autherId: 0,
+        autherAvatar: '',
+        files: [],
+        collectNum: 0,
+        commentNum: 0,
+        likeNum: 0,
+        readNum: 0,
+        likeStatus: false,
+        collectedStatus: false,
+        createTime: 0,
+        updateTime: 0,
+        content: `CSS伪类与伪元素
+伪类
+        伪类是选择器的一种，它用于选择处于特定状态的元素，比如当它们是这一类型的第一个元素时，或者是当鼠标指针悬浮在元素上面的时候。它们表现得会像是你向你的文档的某个部分应用了一个类一样，帮你在你的标记文本中减少多余的类，让你的代码更灵活、更易于维护。
+
+以：开头
+伪元素
+        创建一些不在文档树中的元素，并为其添加样式。(就是选取某些元素前面或后面这种普通选择器无法完成的工作,虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。)
+
+以:: 开头
+demo  
+
+随机提问
+网站的导航菜单中，只需要选中一级菜单项而不包括下拉菜单项。
+网页中的标题与下面的段落之间设置特定样式。
+对整个网页内容的样式进行设置，或者选择某个容器内的所有子元素。
+对一组相邻的列表项或卡片进行样式设置。
+css关系选择器代码测试
+
+题目 1：
+
+在一个网页中，有一个包含多个 <div> 元素的容器，每个 <div> 元素内部包含一个 <span> 元素作为其直接子元素。现在需要对每个 <span> 元素应用特定的样式，要求将其字体加粗。
+
+题目 2：
+
+在一个页面中，有一组图片和它们对应的标题。每个图片和标题都被包含在一个 <div> 元素中，图片是 <div> 元素的直接子元素，而标题是图片的兄弟元素，位于图片之后。现在需要对每个图片的标题应用特定样式，要求将标题的文字大小设为16像素。
+
+题目 3：
+
+一个网站的页脚包含了一组链接，每个链接都是 <a> 元素，链接之间是兄弟关系。现在需要对所有链接之间的间距进行调整，要求将链接之间的右边距设为10像素。
+
+题目 4：
+
+在一个列表中，每个列表项都包含了一个标题和一个段落。标题和段落是兄弟元素关系，排列在同一级别。现在需要对每个列表项中的段落应用特定样式，要求将段落的文字颜色设置为灰色。
+
+ CSS布局`,
+        labels: ['前端', 'React', 'Node.js'],
+      };
+      return;
+    }
     // 获得博客内容
     if (localStorage.getItem('token') && localStorage.getItem('userId')) {
       // 登录状态

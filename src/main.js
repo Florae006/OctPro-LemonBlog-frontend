@@ -13,6 +13,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import Vue3Autocounter from 'vue3-autocounter';
+
 axios.defaults.withCredentials = true;
 
 library.add(fas);
@@ -24,6 +26,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 app.component('VueStar', VueStar);
 app.component('font-awesome-icon', FontAwesomeIcon);
+app.component('Vue3Autocounter', Vue3Autocounter);
 
 app.config.globalProperties.$api = axios;
 app.config.globalProperties.$cookies = VueCookies;

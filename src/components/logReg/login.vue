@@ -153,6 +153,7 @@ export default {
           email: this.ruleFormEmail.email,
           password: this.ruleFormEmail.password,
           verifyCode: this.ruleFormEmail.imgcode,
+          
         },
       }
       axios(options).then((response) => {

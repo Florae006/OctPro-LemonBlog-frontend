@@ -1,9 +1,14 @@
-<script lang="ts">
+<script lang="ts" >
 import axios from 'axios';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { ref } from 'vue';
+import Content from './Content.vue';
+import Welcome from './Welcome.vue';
 
 export default {
+  components: {
+    Content,Welcome,
+  },
 
   setup() {
     const blogList = ref([] as any[]);
@@ -37,6 +42,12 @@ export default {
       else if (rter == 'tagManage') {
         this.tagManage();
       }
+      else if (rter == 'teachManage') {
+        this.teachManage();
+      }
+    },
+    teachManage() {
+      // TODO: 培训管理
     },
     tagManage() {
       const option = {
@@ -307,7 +318,7 @@ export default {
   <div style="padding: 0;margin:0;height:90%">
     <el-container style="height: 100%;direction:vertical;background-color: rgb(208, 238, 255);">
       <el-aside
-        style="width: 200px;background-color: rgb(254, 220, 220);color:rgb(72, 72, 72);font-size: 20px;text-align: center;box-sizing:content-box;border:2px solid #ffffff">
+        style="width: 200px;background-color: #ffffff;color:rgb(72, 72, 72);font-size: 20px;text-align: center;box-sizing:content-box;border:2px solid #ffffff">
         <el-menu style="background-color: transparent;">
           <h1 style="text-align: center;width:100%;">菜单</h1>
           <el-menu-item index="0" @click="showView('manage', '仪表盘')">
@@ -334,10 +345,14 @@ export default {
             <el-menu-item index="1-4" @click="showView('accuseManage', '举报管理')"><el-icon>
                 <Coin />
               </el-icon>举报管理</el-menu-item>
-            <el-menu-item index="1-5" @click="showView('bulletinManage', '公告管理')"><el-icon>
+              <el-menu-item index="1-5" @click="showView('teachManage', '培训管理')"><el-icon>
+                <Bell />
+              </el-icon>培训管理
+              </el-menu-item>
+            <el-menu-item index="1-6" @click="showView('bulletinManage', '公告管理')"><el-icon>
                 <Bell />
               </el-icon>公告管理</el-menu-item>
-            <el-menu-item index="1-6" @click="showView('historyManage', '操作历史')"><el-icon>
+            <el-menu-item index="1-7" @click="showView('historyManage', '操作历史')"><el-icon>
                 <PieChart />
               </el-icon>操作历史</el-menu-item>
           </el-sub-menu>
@@ -353,7 +368,11 @@ export default {
         </el-menu>
       </el-aside>
       <el-main style="background-color: rgb(219, 244, 255);">
-        <h1>欢迎您，管理员</h1>
+        <div v-if="this.$route.params.manage == 'welcome'">
+          <h1>欢迎您，管理员</h1>
+          <Welcome/>
+        </div>
+
         <div v-if="this.$route.params.manage == 'tagManage'">
           <h1>标签列表</h1>
           <el-input style="width: 300px;height:40px;" v-model="tagName" placeholder="请设置新标签" />
@@ -435,6 +454,10 @@ export default {
             </div>
             <span>{{ i.blogBrief }}</span>
           </el-card>
+        </div>
+
+        <div v-if="this.$route.params.manage == 'teachManage'">
+        <Content/>
         </div>
       </el-main>
     </el-container>
